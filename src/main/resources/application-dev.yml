@@ -1,0 +1,53 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /sell
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/sell?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#  mvc:
+#    view:
+#      suffix: .html
+#      prefix: /templates/
+wechat:
+  mpAppId: wx44a476d8da7f3317
+  mpAppSecret: b184e04d915ba3868287112188cce793
+  openAppId: lkdsjafjjoij
+  openAppSecret: eo3093490kdsk
+  mchId: 1409146202
+  mchKey: dfgdasfafsdfdsfsafewrew
+  keyPath: d://var/weixin_cert/h5.p12
+  notifyUrl: http://feiji.nat300.top/sell/pay/notify
+  templateId:
+    orderStatus: 46IQoo4uitR5v5FPZhGu3M4QzwmEQr1FPc5Yy2gpubw
+
+projecturl:
+  wechatMpAuthorize: http://feiji.nat300.top
+  wechatOpenAuthorize: http://feiji.nat300.top
+  sell: http://feiji.nat300.top
+logging:
+  level:
+    com.imooc.dataobject.mapper: trace
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
