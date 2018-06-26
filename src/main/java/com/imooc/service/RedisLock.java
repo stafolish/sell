@@ -48,7 +48,7 @@ public class RedisLock {
     public void unlock(String key, String value) {
         try {
             String currentValue = redisTemplate.opsForValue().get(key);
-            if (!StringUtils.isEmpty(currentValue) && currentValue.equals(key)) {
+            if (!StringUtils.isEmpty(currentValue) && currentValue.equals(value)) {
                 redisTemplate.opsForValue().getOperations().delete(key);
             }
         } catch (Exception e) {
