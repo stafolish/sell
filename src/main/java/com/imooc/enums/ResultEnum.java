@@ -7,7 +7,7 @@ import lombok.Getter;
  * 2018/3/28 15:05
  */
 @Getter
-public enum ResultEnum {
+public enum ResultEnum implements CodeEnum{
 
     SUECCESS(0, "成功"),
 
