@@ -1,5 +1,6 @@
 package com.imooc.controller;
 
+import com.google.common.net.UrlEscapers;
 import com.imooc.config.ProjectUrlConfig;
 import com.imooc.enums.ResultEnum;
 import com.imooc.exception.SellException;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
@@ -35,9 +37,15 @@ public class WechatController {
     private ProjectUrlConfig projectUrlConfig;
 
     @GetMapping("/authorize")
-    public String authorize(@RequestParam("returnUrl") String returnUrl) {
+    public String authorize(@RequestParam("returnUrl") String returnUrl)  {
         String url = projectUrlConfig.getWechatMpAuthorize() + "/sell/wechat/userInfo";
-        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl));
+        String redirectUrl = null;
+		try {
+			redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl,"uft-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return "redirect:" + redirectUrl;
     }
 

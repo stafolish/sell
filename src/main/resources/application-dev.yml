@@ -5,13 +5,13 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
-    url: jdbc:mysql://127.0.0.1:3306/sell?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: 'root'
+    password: '!QAZxsw2'
+    url: 'jdbc:mysql://127.0.0.1:3306/sell?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false'
   jpa:
     show-sql: true
   jackson:
-    default-property-inclusion: non_null
+    default-property-inclusion: NON_NULL
   freemarker:
     template-loader-path: classpath:/templates
     cache: false
