@@ -31,12 +31,12 @@ public class SellerAuthorizeAspect {
     private StringRedisTemplate redisTemplate;
 
     //@Pointcut("execution (public * com.imooc.controller.Seller*.*(..))" +
-     //       "&& !execution(public * com.imooc.controller.SellerUserController.*(..))")
+    //       "&& !execution(public * com.imooc.controller.SellerUserController.*(..))")
     public void verify() {
 
     }
 
-   // @Before("verify()")
+    // @Before("verify()")
     public void doVerify() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -50,7 +50,7 @@ public class SellerAuthorizeAspect {
 
         //去redis里查询
         String tokenValue = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PRIFIX, cookie.getValue()));
-        if (StringUtils.isEmpty(tokenValue)){
+        if (StringUtils.isEmpty(tokenValue)) {
             log.warn("【登录校验】 redis中查不到token");
         }
     }

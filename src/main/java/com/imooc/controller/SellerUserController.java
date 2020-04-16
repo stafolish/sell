@@ -42,8 +42,7 @@ public class SellerUserController {
     @GetMapping("/login")
     public ModelAndView login(@RequestParam("openid") String openid,
                               HttpServletResponse response,
-                              Map<String, Object> map
-    ) {
+                              Map<String, Object> map) {
         //openid和数据库里的去匹配
         SellerInfo sellerInfo = sellerService.findSellerInfoByOpenid(openid);
 

@@ -30,7 +30,7 @@ public class OrderForm2OrderDTOConverter {
         orderDTO.setBuyerAddress(orderForm.getAddress());
         orderDTO.setBuyerOpenid(orderForm.getOpenid());
 
-        List<OrderDetail> orderDetailList = new ArrayList<>();
+        List<OrderDetail> orderDetailList;
         try {
             orderDetailList = gson.fromJson(orderForm.getItems(),
                     new TypeToken<List<OrderDetail>>() {
@@ -40,7 +40,7 @@ public class OrderForm2OrderDTOConverter {
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
         orderDTO.setOrderDetailList(orderDetailList);
-        return  orderDTO;
+        return orderDTO;
     }
 
 }
